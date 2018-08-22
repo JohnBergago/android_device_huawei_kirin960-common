@@ -15,7 +15,7 @@
 #
 
 # Platform Path
-PLATFORM_PATH := device/huawei/common
+PLATFORM_PATH := device/huawei/kirin960-common
 
 # Generic A-only Target
 include build/make/target/board/generic_arm64_a/BoardConfig.mk
@@ -60,7 +60,7 @@ TARGET_KERNEL_TOOLS_PREFIX := $(TARGET_KERNEL_TOOLCHAIN_ROOT)/bin/aarch64-linux-
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 
-# Charger 
+# Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := "/sys/class/leds/lcd_backlight0/brightness"
 HEALTHD_BACKLIGHT_LEVEL := 102
@@ -71,7 +71,7 @@ HEALTHD_ENABLE_HUAWEI_FASTCHG_CHECK := true
 
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := exfat
-  
+
 # Display
 TARGET_USES_HWC2 := true
 

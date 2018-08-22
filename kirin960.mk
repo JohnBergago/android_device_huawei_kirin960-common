@@ -19,10 +19,10 @@ $(call inherit-product-if-exists, vendor/aosp/config/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/treble_common.mk)
-$(call inherit-product, vendor/huawei/common/huawei-vendor.mk)
+$(call inherit-product, vendor/huawei/kirin960-common/kirin960-common-vendor.mk)
 
 # Platform Path
-PLATFORM_PATH := device/huawei/common
+PLATFORM_PATH := device/huawei/kirin960-common
 
 # Platform specific overlays
 DEVICE_PACKAGE_OVERLAYS += $(PLATFORM_PATH)/overlay-common/main
@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0
-           
+
 # Input
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
@@ -78,10 +78,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
 
-# Aosp Hardware   
+# Aosp Hardware
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/aosp_excluded_hardware.xml:system/etc/permissions/aosp_excluded_hardware.xml       
-        
+    frameworks/native/data/etc/aosp_excluded_hardware.xml:system/etc/permissions/aosp_excluded_hardware.xml
+
 # APNs
 PRODUCT_COPY_FILES += \
      device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
@@ -89,8 +89,8 @@ PRODUCT_COPY_FILES += \
 # Resize system
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rw-system.sh:system/bin/rw-system.sh
-    
-# Aosp    
+
+# Aos
 PRODUCT_PACKAGES += \
      Dialer \
      Launcher3QuickStep \
@@ -98,14 +98,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
      Launcher3 \
-     Eleven \
-     Jelly
 
 # Shims
 PRODUCT_PACKAGES += \
     libshims_hwsmartdisplay_jni \
     libshims_hisupl
-    
+
 # HW Framework
 PRODUCT_PACKAGES += \
 	com.huawei.audioalgo \
@@ -115,7 +113,7 @@ PRODUCT_PACKAGES += \
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
-    
+
 # Override device name
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.sdk=$(PLATFORM_SDK_VERSION) \
@@ -126,16 +124,16 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.cust.cdrom=/dev/null \
     ro.build.version.kmaster=8.1.0
 
-# Sdcardfs    
+# Sdcardfs
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.sys.sdcardfs=0 \
     persist.sys.sdcardfs.emulated=0 \
     persist.sys.sdcardfs.public=0
-    
+
 # Disable excessive dalvik debug messages
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
-    
+
 # Huawei HiSuite (also other OEM custom programs I guess) it's of no use in AOSP builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 	persist.sys.usb.config=adb
@@ -147,7 +145,7 @@ PRODUCT_COPY_FILES += \
 # USB Audio
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
-    
+
 # VNDK
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/vndk/vndk-detect:system/bin/vndk-detect \
@@ -155,7 +153,7 @@ PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/vndk/ld.config.26.txt:system/etc/ld.config.26.txt \
     $(PLATFORM_PATH)/vndk/ld.config.27.txt:system/etc/ld.config.27.txt \
     $(PLATFORM_PATH)/vndk/ld.config.hi3650.txt:system/etc/ld.config.hi3650.txt
-    
+
 # GPS
 PRODUCT_COPY_FILES += \
 	 $(PLATFORM_PATH)/configs/gps.conf:system/etc/gps.conf \
